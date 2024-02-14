@@ -1,0 +1,36 @@
+.griddAreas{
+    display: grid;
+    grid-template-areas:
+     "a b b b c c c"
+     "e f f f g g g"
+     
+    ;
+}
+
+.boxOne{
+    grid-area: a;
+}
+
+.boxThree{
+    grid-area: b;
+}
+.boxFour{
+    grid-area: c;
+
+}
+
+.boxFive{
+    grid-area: e;
+
+}
+
+.boxSix{
+    grid-area: f;
+
+}
+
+.boxSeven{
+    grid-area: g;
+
+}
+
