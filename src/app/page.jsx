@@ -1,16 +1,45 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import DataFecth from "@/components/dataFecth";
 
-export const metadata: Metadata = {
-  title: "Next.js SignIn Page | TailAdmin - Next.js Dashboard Template",
-  description: "This is Next.js Signin Page TailAdmin Dashboard Template",
-};
 
-const SignIn: React.FC = () => {
+
+
+const SignIn = () => {
+
+  const [email, setEmail] = useState("")
+  const [password, setPassWord] = useState("")
+  const [error, setError] = useState("")
+  
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (res.error) {
+        setError("Invalid Credentials");
+        return;
+      } 
+
+      router.replace("dashboard");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <DefaultLayout>
       <Breadcrumb pageName="Sign In" />
@@ -173,13 +202,14 @@ const SignIn: React.FC = () => {
                 Sign In to M-Toca
               </h2>
 
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                   <label className="mb-2.5 block font-medium text-black dark:text-white">
                     Email
                   </label>
                   <div className="relative">
                     <input
+                      onChange={(e) =>setEmail(e.target.value)}
                       type="email"
                       placeholder="Enter your email"
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
@@ -211,6 +241,7 @@ const SignIn: React.FC = () => {
                   </label>
                   <div className="relative">
                     <input
+                      onChange={(e) =>setPassWord(e.target.value)}
                       type="password"
                       placeholder="6+ Characters, 1 Capital letter"
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-white outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
@@ -241,11 +272,7 @@ const SignIn: React.FC = () => {
                 </div>
 
                 <div className="mb-5">
-                  <input
-                    type="submit"
-                    value="Sign In"
-                    className="w-full cursor-pointer rounded-lg border border-[#6a2f85] bg-[#cf3f84] p-4 text-white transition hover:bg-opacity-90"
-                  />
+                 <button className="w-full cursor-pointer rounded-lg border border-[#6a2f85] bg-[#cf3f84] p-4 text-white transition hover:bg-opacity-90" >Login</button>
                 </div>
 
                 <button className="flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50">
@@ -285,10 +312,16 @@ const SignIn: React.FC = () => {
                   Sign in with Google
                 </button>
 
+                {error && (
+            <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
+              {error}
+            </div>
+          )}
+
                 <div className="mt-6 text-center">
                   <p>
                     Don’t have any account?{" "}
-                    <Link href="/auth/signup" className="text-[#cf3f84]">
+                    <Link href="/testando" className="text-[#cf3f84]">
                       Sign Up
                     </Link>
                   </p>
