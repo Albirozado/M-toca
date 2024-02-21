@@ -31,12 +31,12 @@ export const authOptions = {
             } else {
               throw new Error("Failed to login");
             }
+
          
         } catch (error) {
           throw new Error("Failed to login");
           
         }
-
       },
     }),
   ],
@@ -47,6 +47,8 @@ export const authOptions = {
   pages: {
     signIn: "/",
   },
+
+
 };
 
 const handler = NextAuth(authOptions);
