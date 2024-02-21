@@ -14,63 +14,7 @@ import { getServerSession } from "next-auth";
 
 const SignUp = () => {
 
-const [nome, setNome] = useState("")
-const [email, setEmail] = useState("")
-const [password, setPassWord] = useState("")
-const [error, setError] = useState("")
 
-const router = useRouter()
-const handleSubmint = async (e) =>{
-e.preventDefault()
-
-
-if (!nome || !email || !password){
-  setError("All fields are necssary");
-  return;
-}
-
-try {
-  const resUserExist = await fetch ("http://localhost:3000/api/userExist", {
-    method: "POST",
-    headers: {
-      "Content-Type" : "application/json"
-    }, 
-    body: JSON.stringify({  
-       email
-    })
-      
-  })
-  const {user} = await resUserExist.json();
-
-  if (user){
-    setError("user existent")
-    return
-  }
-
-
-  const res = await fetch ("http://localhost:3000/api/register", {
-    method: "POST",
-    headers: {
-      "Content-Type" : "application/json"
-    },
-    body: JSON.stringify({
-      nome, email, password
-    })
-      
-  })
-
-  if(res.ok){
-    const form = e.target
-    form.reset();
-    router.push("/")
-  } else {
-    console.log("User Registration Failed")
-  }
-} catch (error) {
-  console.log("Error in registration")
-  
-}
-}
 
   return (
 
@@ -234,7 +178,7 @@ try {
                 Sign Up to M-Toca
               </h2 >
 
-              <form onSubmit={handleSubmint}>
+              <form>
                 <div className="mb-4">
                   <label className="mb-2.5 block font-medium text-black dark:text-white">
                     Nome
@@ -277,7 +221,6 @@ try {
                   </label>
                   <div className="relative">
                     <input
-                    onChange={(e)=>setEmail(e.target.value)}
                       type="email"
                       placeholder="Enter your email"
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
@@ -309,7 +252,6 @@ try {
                   </label>
                   <div className="relative">
                     <input
-                      onChange={(e)=>setPassWord(e.target.value)}
                       type="password"
                       placeholder="Enter your password"
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
@@ -385,21 +327,11 @@ try {
                   Sign up with Google
                 </button>
 
-               {error &&
-                  <div className="mt-6 text-center">
-                    <p className="uppercase text-white bg-red">
-                      {error}
-                    
-                    </p>
-                  </div>
-
-               }
-                
                 <div className="mt-6 text-center">
                   <p>
                     Ja tem uma conta?{" "}
                     <Link href="/" className="text-[#cf3f84]">
-                      Sign inn
+                      Sign in
                     </Link>
                   </p>
                 </div>

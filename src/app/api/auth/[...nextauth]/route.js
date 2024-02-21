@@ -11,20 +11,29 @@ export const authOptions = {
       credentials: {},
 
       async authorize(credentials) {
-        const {email, password } = credentials
+        const {username, password } = credentials
         try {
-          await connectMongoDB()
-          const user = await User.findOne({email})
-          if(!user){
-            null
-          }
-          const passworfMatch = await bcrypt.compare(password, user.password)
-
-          if(!passworfMatch){
-            return null
-          }
-          return user
+          const res = await fetch("https://api.dev.mtoca.net/login", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              body: new URLSearchParams({
+                username,
+                password
+              })
+            });
+             const data = await res.json()
+            
+            if (res.ok) {
+              return data
+              
+            } else {
+              throw new Error("Failed to login");
+            }
+         
         } catch (error) {
+          throw new Error("Failed to login");
           
         }
 
