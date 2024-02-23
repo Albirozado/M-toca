@@ -43,35 +43,29 @@ const SignIn = () => {
 
   return (
     <DefaultLayout>
-      <Breadcrumb pageName="Sign In" />
+<div className="pt-0 2xl:pt-15">
 
-      <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+      <div className="rounded-sm py-0 2xl:py-20  border shadow-default border-strokedark bg-boxdark">
         <div className="flex flex-wrap items-center">
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="px-26 text-center">
-              <Link className=" inline-block" href="/">
+              <div className=" inline-block">
                 <Image
-                  className="hidden dark:block"
+                  className=""
                   width={120}
             height={0}
             src={"/images/logo/M-tocalogo.png"}
                   alt="Logo"
                   />
-                <Image
-                  className="dark:hidden"
-                  src={"/images/logo/logo-dark.svg"}
-                  alt="Logo"
-                  width={176}
-                  height={32}
-                />
-              </Link>
+            
+              </div>
 
-              <p className="2xl:px-20">
+              <p className="2xl:px-20 text-slate-400">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit
                 suspendisse.
               </p>
 
-              <span className="mt-15 inline-block">
+              <span className="mt-5 inline-block">
                 <svg
                   width="350"
                   height="350"
@@ -196,16 +190,16 @@ const SignIn = () => {
             </div>
           </div>
 
-          <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
+          <div className="w-full order-strokedark xl:w-1/2 xl:border-l-2 xl:border-slate-400">
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
-              <span className="mb-1.5 block font-medium">Comece gratis</span>
-              <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
-                Cadastro M-Toca
+              <span className="mb-1.5 block font-medium text-slate-400">Comece gratis</span>
+              <h2 className="mb-9 text-2xl font-bold text-white sm:text-title-xl2">
+                Login M-Toca
               </h2>
 
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
-                  <label className="mb-2.5 block font-medium text-black dark:text-white">
+                  <label className="mb-2.5 block font-medium text-white">
                     Username
                   </label>
                   <div className="relative">
@@ -213,7 +207,7 @@ const SignIn = () => {
                       onChange={(e) =>setUsername(e.target.value)}
                       type="text"
                       placeholder="Username"
-                      className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                      className="w-full rounded-lg border bg-transparent py-4 pl-6 pr-10 outline-none focus-visible:shadow-none border-form-strokedar bg-form-input text-white focus:border-primary"
                     />
 
                     <span className="absolute right-4 top-4">
@@ -237,7 +231,7 @@ const SignIn = () => {
                 </div>
 
                 <div className="mb-6">
-                  <label className="mb-2.5 block font-medium text-black dark:text-white">
+                  <label className="mb-2.5 block font-medium text-white">
                     Password
                   </label>
                   <div className="relative">
@@ -293,6 +287,7 @@ const SignIn = () => {
           </div>
         </div>
       </div>
+</div>
     </DefaultLayout>
   );
 };

@@ -7,11 +7,11 @@ import styles from "../../css/genero.module.css"
 const ChartThree: React.FC = () => {
  
   return (
-    <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pb-5 pt-5.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-5">
+    <div className="col-span-12 rounded-sm border px-5 pb-5 pt-5.5 shadow-default border-strokedark bg-boxdark xl:col-span-5">
       
         <h2 className="ml-1 text-xl font-semibold text-white">Genero</h2>
       
-      <p className="underline font-semibold text-end mr-1">ver mais</p>
+      <p className="underline font-semibold text-end mr-1 text-slate-300">ver mais</p>
       <div className="flex w-full ">
           <div className="bg-[#845EC2] m-1 py-6 rounded-md text-center capitalize w-[25%]">
             <h2 className="text-white font-bold ">R&B</h2>

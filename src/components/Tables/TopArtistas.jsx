@@ -105,12 +105,12 @@ export default function TopArtistas() {
 
   return (
     <>
-  <div className=' dark:border-strokedark dark:bg-boxdark mt-6 px-6'>
+  <div className=' border-strokedark bg-boxdark mt-6 px-6'>
       <h3 className='capitalize font-semibold text-white text-xl pt-3'>top artistas</h3>
       <Swiper
         onSwiper={setSwiperRef}
        
-        slidesPerView={slidesPerView}
+        slidesPerView={7}
         centeredSlides={false}
         spaceBetween={30}
        
@@ -129,8 +129,8 @@ export default function TopArtistas() {
                 <img src={art.image} alt="" className='rounded-md'/>
               </div>
               <div className='relative'>
-              <p className='capitalize text-white font-medium '>{art.nome}</p>
-              <span className='text-sm pt-[-2px] relative top-[-5px]'>{art.plays} plays</span>
+              <p className='capitalize text-white font-medium pt-1'>{art.nome}</p>
+              <span className='text-sm pt-[-2px] text-slate-300 relative top-[-5px]'>{art.plays} plays</span>
                 
               </div>
             </div>

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSession } from "next-auth/react"; 
+import User from "../../../public/images/icon/sideBarIcon/user.png"
 
 const DropdownUser = () => {
 const {data : session} = useSession() 
@@ -50,27 +51,24 @@ const {data : session} = useSession()
           href="#"
         >
           <span className="hidden text-right lg:block">
-            <span className="block text-sm font-medium text-black dark:text-white">
+            <span className="block text-sm font-medium text-white">
               {session?.user?.name}
             </span>
-            <span className="block text-xs">Admin</span>
+            <span className="block text-xs text-slate-300">Administrador</span>
           </span>
 
           <span className="h-12 w-12 rounded-full">
-            <Image
-              width={112}
-              height={112}
-              src={"/images/user/user-01.png"}
-              style={{
-                width: "auto",
-                height: "auto",
-              }}
-              alt="User"
-            />
+          <Image
+                        alt="image"
+                        width={50}
+                        height={50}
+                        src={User}
+
+                        />
           </span>
 
           <svg
-            className="hidden fill-current sm:block"
+            className="hidden fill-current sm:block text-slate-300"
             width="12"
             height="8"
             viewBox="0 0 12 8"
@@ -91,11 +89,11 @@ const {data : session} = useSession()
           ref={dropdown}
           onFocus={() => setDropdownOpen(true)}
           onBlur={() => setDropdownOpen(false)}
-          className={`absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark ${
+          className={`absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border shadow-default border-strokedark bg-boxdark ${
             dropdownOpen === true ? "block" : "hidden"
           }`}
         >
-          <ul className="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark">
+          <ul className="flex flex-col gap-5 border-b px-6 py-7.5 border-strokedark">
         
             <li>
               <Link
@@ -103,7 +101,7 @@ const {data : session} = useSession()
                 className="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
               >
                 <svg
-                  className="fill-current"
+                  className="fill-current text-slate-300"
                   width="22"
                   height="22"
                   viewBox="0 0 22 22"
@@ -127,7 +125,7 @@ const {data : session} = useSession()
             onClick={()=>signOut()}
           className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
             <svg
-              className="fill-current"
+              className="fill-current text-slate-300"
               width="22"
               height="22"
               viewBox="0 0 22 22"
