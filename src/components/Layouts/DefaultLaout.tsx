@@ -11,7 +11,7 @@ export default function DefaultLayout({
   children: React.ReactNode;
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  const userName = "username"
   const {data: session} = useSession()
   return (
     <>
@@ -19,7 +19,7 @@ export default function DefaultLayout({
       <div className="flex h-screen overflow-hidden">
         {/* <!-- ===== Sidebar Start ===== --> */}
         {!session?.user ? null : 
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}  userName = {userName} />
         }
         {/* <!-- ===== Sidebar End ===== --> */}
 

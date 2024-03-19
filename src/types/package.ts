@@ -3,5 +3,6 @@ export type Package = {
   email: string;
   data: string;
   aroba: string;
-  image: string
+  image: string;
+  token: string;
 };

@@ -16,7 +16,7 @@ const {data : session} = useSession()
 
   // close on click outside
   useEffect(() => {
-    const clickHandler = ({ target }: MouseEvent) => {
+    const clickHandler = ({ target }: MouseEvent) => { 
       if (!dropdown.current) return;
       if (
         !dropdownOpen ||

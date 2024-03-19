@@ -6,6 +6,7 @@ import "@/css/style.css";
 import React, { useEffect, useState } from "react";
 import Loader from "@/components/common/Loader";
 import {AuthProvider} from "../app/providers"
+import { AppWrapper } from "@/components/userContext";
 
 export default function RootLayout({
   children,
@@ -26,7 +27,7 @@ export default function RootLayout({
       <body suppressHydrationWarning={true}>
         <div className="bg-boxdark-2 dark:text-bodydark">
         <AuthProvider>
-              {loading ? <Loader /> : children}
+              {loading ? <Loader /> :children }
 
         </AuthProvider>
         </div>

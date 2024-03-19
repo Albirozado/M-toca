@@ -1,12 +1,11 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import DataFecth from "@/components/dataFecth";
 
 
 
@@ -17,10 +16,28 @@ const SignIn = () => {
   const [username, setUsername] = useState("")
   const [password, setPassWord] = useState("")
   const [error, setError] = useState("")
+  const [token, setToken] = useState("")
   
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handler = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`https://api.dev.mtoca.net/login?username=${username}&password=${password}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" }
+      });
+      const data = await response.json();
+      //setData(data);
+      console.log(data)
+    } catch (error) {
+      console.error('Erro ao buscar os dados:', error);
+    }
+  };
+
+
+
+   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -30,16 +47,43 @@ const SignIn = () => {
         redirect: false,
       });
 
+
       if (res.error) {
         setError("email ou password incorreta");
         return;
-      } 
+      }
 
-      router.replace("dashboard");
+      const response = await fetch(`https://api.dev.mtoca.net/login?username=${username}&password=${password}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" }
+      });
+      const data = await response.json();
+    
+        setToken(data.accessToken)
+        //console.log(token)
+
+       
+
+      
+     // router.replace(`/dashboard?accesstoken=${encodeURIComponent(token)}`);
+      
+
+      // Perform other actions upon successful sign-in
     } catch (error) {
       console.log(error);
     }
   };
+  useEffect(() => {
+    // Log token value when it changes and it's not empty
+    if (token !== '') {
+      console.log(token);
+      router.replace(`/dashboard?accesstoken=${encodeURIComponent(token)}`);
+    }
+  }, [token]);
+  
+ 
+ // Add dependencies if needed
+ 
 
   return (
     <DefaultLayout>
@@ -284,6 +328,7 @@ const SignIn = () => {
              
               </form>
             </div>
+            <button onClick={handler}>CLICAR AGORA</button>
           </div>
         </div>
       </div>

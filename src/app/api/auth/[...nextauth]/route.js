@@ -3,6 +3,8 @@ import User from "../../../../models/user";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs"
+import {useUser} from "../../../../components/userContext"
+import { getToken } from "next-auth/jwt"
 
 export const authOptions = {
   providers: [
@@ -24,6 +26,8 @@ export const authOptions = {
               })
             });
              const data = await res.json()
+             
+             
             
             if (res.ok) {
               return data
@@ -47,9 +51,11 @@ export const authOptions = {
   pages: {
     signIn: "/",
   },
-
+ 
 
 };
+
+
 
 const handler = NextAuth(authOptions);
 

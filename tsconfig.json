@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Tables/TopArtistas.jsx", "src/app/auth/signup/page.jsxs", "src/app/page.jsx", "src/app/auth/signin/page.jsx", "src/app/dashboard/page.tsx", "src/app/api/auth/[...nextauth]/route.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Tables/TopArtistas.jsx", "src/app/auth/signup/page.jsxs", "src/app/page.jsx", "src/app/auth/signin/page.jsx", "src/app/dashboard/page.jsx", "src/app/api/auth/[...nextauth]/route.js", "src/components/DataFecth.tsx", "src/app/genero/page.tsx"],
   "exclude": ["node_modules"]
 }

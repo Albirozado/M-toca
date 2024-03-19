@@ -37,13 +37,14 @@ import Logo from "../../../public/images/icon/sideBarIcon/M-tocalogo-(1).png"
 
 
 
-
 interface SidebarProps {
   sidebarOpen: boolean;
   setSidebarOpen: (arg: boolean) => void;
+  userName: string;
+
 }
 
-const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
+const Sidebar = ({ sidebarOpen, setSidebarOpen, userName }: SidebarProps) => {
   const pathname = usePathname();
 
   const trigger = useRef<any>(null);
@@ -112,7 +113,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
 
       </div>
+
       {/* <!-- SIDEBAR HEADER --> */}
+    
+      
 
       <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
         {/* <!-- Sidebar Menu --> */}
@@ -354,7 +358,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                     <ul className="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                                       <li>
                                         <Link
-                                          href="/forms/form-elements"
+                                          href={{
+                                            pathname: "/genero",
+                                            query: {
+                                              username : `${userName}`
+                                            }
+                                          }}
                                           className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
                                             pathname === "/forms/form-elements" &&
                                             "text-white"
@@ -510,7 +519,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                         <ul className="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                           <li>
                             <Link
-                              href="/forms/form-elements"
+                               href={{
+                                pathname: "/jobs",
+                                query: {
+                                  username : `${userName}`
+                                }
+                              }}
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
                                 pathname === "/forms/form-elements" &&
                                 "text-white"

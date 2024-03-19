@@ -6,6 +6,7 @@ import styles from "../../css/genero.module.css"
 
 const ChartThree: React.FC = () => {
  
+  
   return (
     <div className="col-span-12 rounded-sm border px-5 pb-5 pt-5.5 shadow-default border-strokedark bg-boxdark xl:col-span-5">
       

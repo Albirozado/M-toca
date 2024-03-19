@@ -1,3 +1,4 @@
+"use client"
 import React, { useRef, useState, useEffect } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,9 +8,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
+import { useSession } from "next-auth/react"; 
+import { useRouter } from 'next/navigation';
+import DataFecth from '../DataFecth';
+
 
 export default function TopArtistas() {
 
@@ -102,7 +106,6 @@ export default function TopArtistas() {
 
 
 
-
   return (
     <>
   <div className=' border-strokedark bg-boxdark mt-6 px-6'>
@@ -141,6 +144,11 @@ export default function TopArtistas() {
       </Swiper>
   </div>
 
+<div>
+ola mundo <br />
+
+
+</div>
       
     </>
   );
